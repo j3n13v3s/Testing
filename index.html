@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computing y PaaS - Fundacion Universitaria Compensar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6fb;
+            color: #222;
+        }
+        header {
+            background: linear-gradient(135deg, #273c75, #192a56);
+            color: #fff;
+            padding: 20px 40px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        header p {
+            margin: 5px 0 0 0;
+        }
+        nav {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 10px 40px;
+            gap: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #273c75;
+            font-weight: bold;
+        }
+        main {
+            padding: 20px 40px 40px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        section {
+            margin-bottom: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: #273c75;
+            border-left: 4px solid #273c75;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #192a56;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .hero-img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .diagram {
+            background-color: #f0f4ff;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .diagram .layer {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .iaas { background-color: #40739e; }
+        .paas { background-color: #e1b12c; }
+        .saas { background-color: #44bd32; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #273c75;
+            color: white;
+        }
+        .chart {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .bar-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            height: 200px;
+            padding: 10px;
+            background-color: #f7f9ff;
+            border-radius: 8px;
+        }
+        .bar {
+            flex: 1;
+            background: linear-gradient(180deg, #00a8ff, #273c75);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+        }
+        .bar span {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .bar-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.85rem;
+        }
+        footer {
+            background-color: #192a56;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            header, nav ul, main {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cloud Computing y Plataforma como Servicio (PaaS)</h1>
+        <p><strong>Universidad:</strong> Fundacion Universitaria Compensar | <strong>Docente:</strong> Ing. Julian Esteban Nieves Peña</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#modelos-servicio">Modelos de servicio</a></li>
+            <li><a href="#paas-detalle">PaaS en detalle</a></li>
+            <li><a href="#proveedores">Proveedores PaaS</a></li>
+            <li><a href="#arquitectura">Arquitectura y componentes</a></li>
+            <li><a href="#casos-uso">Casos de uso</a></li>
+            <li><a href="#conclusiones">Conclusiones</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="introduccion">
+            <div class="grid-2">
+                <div>
+                    <h2>¿Qué es Cloud Computing?</h2>
+                    <p>Cloud Computing es un modelo de prestación de servicios de TI que permite el acceso bajo demanda, a través de Internet, a recursos compartidos de cómputo como servidores, almacenamiento, bases de datos, redes, software y análisis, entre otros. El usuario consume estos recursos como un servicio, sin necesidad de gestionar físicamente la infraestructura.</p>
+                    <p>Este modelo se caracteriza por ser elástico, medible, automatizado y accesible desde cualquier lugar, permitiendo a las organizaciones innovar más rápido, reducir costos iniciales y escalar sus soluciones de acuerdo con la demanda.</p>
+                </div>
+                <div>
+                    <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg" alt="Centro de datos y concepto de computación en la nube" class="hero-img">
+                </div>
+            </div>
+        </section>
+
+        <section id="modelos-servicio">
+            <h2>Modelos de servicio en Cloud Computing: IaaS, PaaS y SaaS</h2>
+            <div class="grid-2">
+                <div>
+                    <p>Los modelos de servicio más utilizados en Cloud Computing son Infraestructura como Servicio (IaaS), Plataforma como Servicio (PaaS) y Software como Servicio (SaaS). Cada uno ofrece un nivel diferente de abstracción y responsabilidad entre el proveedor y el cliente.</p>
+                    <ul>
+                        <li><strong>IaaS:</strong> Proporciona recursos básicos de infraestructura como máquinas virtuales, redes y almacenamiento. El cliente gestiona el sistema operativo y las aplicaciones.</li>
+                        <li><strong>PaaS:</strong> Ofrece un entorno completo de desarrollo y despliegue (runtime, middleware, bases de datos, herramientas de desarrollo) para crear aplicaciones sin gestionar servidores ni sistemas operativos.</li>
+                        <li><strong>SaaS:</strong> Brinda aplicaciones listas para usar a través de Internet (por ejemplo, correo electrónico, CRM, ERP), donde el proveedor gestiona toda la pila tecnológica.</li>
+                    </ul>
+                </div>
+                <div class="diagram" aria-label="Diagrama comparativo de IaaS PaaS y SaaS">
+                    <h3>Diagrama de capas de servicio</h3>
+                    <div class="layer iaas">IaaS - Infraestructura como Servicio</div>
+                    <div class="layer paas">PaaS - Plataforma como Servicio</div>
+                    <div class="layer saas">SaaS - Software como Servicio</div>
+                    <p style="font-size:0.85rem; margin-top:10px;">A medida que se sube en la pirámide (de IaaS a SaaS), el proveedor asume más responsabilidad y el cliente se enfoca más en la lógica de negocio.</p>
+                </div>
+            </div>
+
+            <h3>Comparación de responsabilidades</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>On-Premise</th>
+                        <th>IaaS</th>
+                        <th>PaaS</th>
+                        <th>SaaS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aplicación</td>
+                        <td>Cliente</td>
+                        <td>Cliente</td>
+                        <td>Cliente</td>
+                        <td>Proveedor</td>
+                    </tr>
+                    <tr>
+                        <td>Middleware</td>
+                        <td>Cliente</td>
+                        <td>Cliente</td>
+                        <td>Proveedor</td>
+                        <td>Proveedor</td>
+                    </tr>
+                    <tr>
+                        <td>Base de datos</td>
+                        <td>Cliente</td>
+                        <td>Cliente</td>
+                        <td>Proveedor</td>
+                        <td>Proveedor</td>
+                    </tr>
+                    <tr>
+                        <td>Sistema operativo</td>
+                        <td>Cliente</td>
+                        <td>Cliente</td>
+                        <td>Proveedor</td>
+                        <td>Proveedor</td>
+                    </tr>
+                    <tr>
+                        <td>Virtualización, servidores, almacenamiento, red</td>
+                        <td>Cliente</td>
+                        <td>Proveedor</td>
+                        <td>Proveedor</td>
+                        <td>Proveedor</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="paas-detalle">
+            <h2>Plataforma como Servicio (PaaS) en detalle</h2>
+            <p>PaaS es un modelo de Cloud Computing que proporciona un entorno completo de desarrollo y despliegue en la nube, incluyendo infraestructura, runtime, middleware, bases de datos, herramientas de desarrollo, servicios de integración y capacidades de seguridad. El objetivo es que los equipos de desarrollo se enfoquen en escribir código y crear valor para el negocio, mientras el proveedor se encarga de la infraestructura subyacente.</p>
+            <div class="grid-2">
+                <div>
+                    <h3>Características clave de PaaS</h3>
+                    <ul>
+                        <li>Entorno de ejecución gestionado (runtimes para Java, .NET, Node.js, Python, etc.).</li>
+                        <li>Escalabilidad automática en función de la carga de trabajo.</li>
+                        <li>Servicios integrados de bases de datos, colas de mensajes, caché, API y autenticación.</li>
+                        <li>Herramientas de CI/CD para integrar, probar y desplegar aplicaciones.</li>
+                        <li>Gestión centralizada de la seguridad, parches y actualizaciones del entorno.</li>
+                    </ul>
+
+                    <h3>Ventajas de utilizar PaaS</h3>
+                    <ul>
+                        <li>Reducción del tiempo de salida al mercado al simplificar la infraestructura.</li>
+                        <li>Menor costo operativo al no gestionar servidores, sistemas operativos ni middleware.</li>
+                        <li>Mayor productividad de los desarrolladores, al contar con servicios listos para usar.</li>
+                        <li>Facilidad para implementar arquitecturas modernas como microservicios, contenedores y serverless.</li>
+                        <li>Mejor alineación con prácticas DevOps y automatización de despliegues.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Gráfico: Crecimiento de la adopción de PaaS</h3>
+                    <p style="font-size:0.9rem;">Ejemplo ilustrativo de cómo la adopción de PaaS ha crecido frente a otros modelos de servicio de nube.</p>
+                    <div class="chart" aria-label="Gráfico de barras de adopción de PaaS vs IaaS y SaaS">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 70%;"><span>70%</span></div>
+                            <div class="bar" style="height: 55%;"><span>55%</span></div>
+                            <div class="bar" style="height: 80%;"><span>80%</span></div>
+                        </div>
+                        <div class="bar-labels">
+                            <span>IaaS</span>
+                            <span>PaaS</span>
+                            <span>SaaS</span>
+                        </div>
+                    </div>
+                    <p style="font-size:0.8rem; margin-top:10px;">Nota: Los porcentajes son de ejemplo para fines académicos y pueden variar según la fuente consultada.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="proveedores">
+            <h2>Principales proveedores y ejemplos de PaaS</h2>
+            <p>Los proveedores líderes de servicios en la nube (AWS, Microsoft Azure y Google Cloud Platform) ofrecen plataformas PaaS con características avanzadas de escalabilidad, integración y seguridad.</p>
+            <div class="grid-2">
+                <div>
+                    <h3>Ejemplos destacados de PaaS</h3>
+                    <ul>
+                        <li><strong>AWS Elastic Beanstalk:</strong> Servicio PaaS de Amazon que permite desplegar y escalar aplicaciones web y servicios desarrollados en varios lenguajes sin gestionar la infraestructura.</li>
+                        <li><strong>Azure App Service:</strong> Plataforma de Microsoft para crear aplicaciones web, API y backends móviles, con integración a servicios de autenticación, bases de datos y DevOps.</li>
+                        <li><strong>Google App Engine:</strong> Plataforma de Google Cloud que permite crear y desplegar aplicaciones escalables, con soporte para múltiples lenguajes y herramientas de desarrollo integradas.</li>
+                        <li><strong>Cloud Run:</strong> Servicio de Google que facilita desplegar contenedores sin gestionar servidores, alineado con el enfoque serverless.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Tabla comparativa de proveedores PaaS</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Proveedor</th>
+                                <th>Servicio PaaS principal</th>
+                                <th>Lenguajes soportados (ejemplos)</th>
+                                <th>Integraciones clave</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>AWS</td>
+                                <td>Elastic Beanstalk</td>
+                                <td>Java, .NET, Node.js, Python, PHP, Go</td>
+                                <td>RDS, S3, CloudWatch, IAM</td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft Azure</td>
+                                <td>Azure App Service</td>
+                                <td>.NET, Java, Node.js, Python, PHP</td>
+                                <td>Azure SQL, Azure AD, GitHub, DevOps</td>
+                            </tr>
+                            <tr>
+                                <td>Google Cloud</td>
+                                <td>App Engine / Cloud Run</td>
+                                <td>Python, Java, Go, Node.js, Ruby, PHP</td>
+                                <td>Cloud SQL, Firestore, Cloud Monitoring</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="arquitectura">
+            <h2>Arquitectura de una solución basada en PaaS</h2>
+            <div class="grid-2">
+                <div>
+                    <p>Una arquitectura típica basada en PaaS para una aplicación web moderna incluye varias capas: front-end, back-end, servicios gestionados y herramientas de integración y despliegue continuo. La plataforma PaaS se encarga de aprovisionar y orquestar estos componentes.</p>
+                    <ul>
+                        <li><strong>Capa de presentación:</strong> Aplicaciones web o móviles que consumen API o servicios expuestos desde la plataforma.</li>
+                        <li><strong>Capa de lógica de negocio:</strong> Servicios y microservicios desplegados en la plataforma PaaS (por ejemplo, contenedores o funciones serverless).</li>
+                        <li><strong>Capa de datos:</strong> Bases de datos relacionales o NoSQL, servicios de almacenamiento de objetos y cachés gestionados.</li>
+                        <li><strong>Servicios transversales:</strong> Autenticación, autorización, monitoreo, registro de logs, encriptación y balanceo de carga.</li>
+                    </ul>
+                </div>
+                <div class="diagram" aria-label="Diagrama de arquitectura de solución PaaS">
+                    <h3>Diagrama de arquitectura PaaS</h3>
+                    <p><strong>Cliente</strong>: Navegador / App móvil</p>
+                    <p>&#8595;</p>
+                    <p><strong>API Gateway / Balanceador</strong></p>
+                    <p>&#8595;</p>
+                    <p><strong>Servicios en PaaS</strong> (microservicios, funciones)</p>
+                    <p>&#8595;</p>
+                    <p><strong>Servicios gestionados</strong> (BD, colas, almacenamiento)</p>
+                    <p>&#8595;</p>
+                    <p><strong>Infraestructura de nube</strong> (red, servidores, virtualización)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="casos-uso">
+            <h2>Casos de uso de PaaS</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>Escenarios típicos</h3>
+                    <ul>
+                        <li>Desarrollo rápido de aplicaciones web y móviles para startups que necesitan lanzar productos en poco tiempo.</li>
+                        <li>Modernización de aplicaciones legadas mediante migración a contenedores y despliegue en servicios PaaS gestionados.</li>
+                        <li>Implementación de arquitecturas de microservicios con escalado automático por demanda.</li>
+                        <li>Aplicaciones de análisis de datos y machine learning que aprovechan servicios de bases de datos, colas y procesamiento en tiempo real.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Beneficios para la educación y proyectos académicos</h3>
+                    <p>En el contexto universitario, PaaS permite a los estudiantes enfocarse en el diseño de soluciones, programación y buenas prácticas de arquitectura sin distraerse con la administración de servidores. Esto facilita el aprendizaje de conceptos como DevOps, integración continua, pruebas automatizadas y despliegue en la nube.</p>
+                    <p>Adicionalmente, muchas plataformas PaaS ofrecen créditos educativos y capas gratuitas, lo que permite implementar laboratorios prácticos de forma económica y accesible para instituciones como la Fundación Universitaria Compensar.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusiones">
+            <h2>Conclusiones</h2>
+            <p>Cloud Computing ha transformado la forma en que las organizaciones consumen y gestionan recursos de TI, ofreciendo modelos de servicio flexibles y escalables. Dentro de estos, la Plataforma como Servicio (PaaS) destaca por ofrecer un entorno completo para el ciclo de vida de las aplicaciones, reduciendo la carga operativa y acelerando la innovación.</p>
+            <p>Comprender las características, ventajas, arquitectura y casos de uso de PaaS es fundamental para diseñar soluciones modernas, resilientes y alineadas con las necesidades de negocio y académicas en la era de la computación en la nube.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Página web académica sobre Cloud Computing y PaaS | Elaborado para la Fundación Universitaria Compensar</p>
+    </footer>
+</body>
+</html>
